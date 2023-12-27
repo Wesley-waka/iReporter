@@ -91,4 +91,4 @@ const adminlogin=(email,password)=>{
         </AdminContext.Provider>
       );
   }
-export default AdminAuthProvider
+  export default AdminAuthProvider
