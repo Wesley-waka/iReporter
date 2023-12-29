@@ -10,9 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.1.1",
+    "@mantine/core": "^7.3.2",
+    "@mantine/hooks": "^7.3.2",
+    "@react-google-maps/api": "^2.19.2",
+    "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
+    "headlessui": "^0.0.0",
+    "heroicons": "^2.1.1",
+    "leaflet": "^1.9.4",
+    "lodash": "^4.17.21",
+    "mantine-datatable": "^7.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.1"
+    "react-google-maps": "^9.4.5",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^6.21.1",
+    "sweetalert2": "^11.10.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
