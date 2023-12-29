@@ -261,9 +261,7 @@ const adminlogin = (email, password) => {
     };
   
     return (
-      <AuthContext.Provider
-        value={{ user, token, login, logout, signup, adminlog, adminSignup }}
-      >
+      <AuthContext.Provider value={{ user, token, login, logout, signup, adminlog, adminSignup }}>
         {children}
       </AuthContext.Provider>
     );
