@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom';
-import { DataTable, DataTableSortStatus } from 'mantine-datatable';
+import { DataTable} from 'mantine-datatable';
 import sortBy from 'lodash/sortBy';
 
 import StatsDashboard from '../StatsDashboard';

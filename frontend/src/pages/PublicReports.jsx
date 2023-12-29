@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { DataTable, DataTableSortStatus } from "mantine-datatable";
+import { DataTable } from "mantine-datatable";
 import { sortBy } from "lodash";
 import { Link } from "react-router-dom";
 import { BeakerIcon } from '@heroicons/react/24/solid'

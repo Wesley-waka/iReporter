@@ -92,7 +92,7 @@ const navigation = {
             <div className="space-y-8">
               <img
                 className="h-7"
-                src={require('..//assets/images/logo-gray.png')}
+                src={'../assets/images/logo-gray.png'}
                 alt="Company name"
               />
               <p className="text-sm leading-6 text-gray-300">
