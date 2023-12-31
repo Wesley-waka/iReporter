@@ -2,6 +2,8 @@ import { create } from 'lodash'
 import React from 'react'
 import { useContext,useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
+import logoIcon from '../assets/images/logo-icon.png'
+
 function Signup() {
   const{signup}=useContext(AuthContext)
   const[first_name,setFirstname]=useState("")
@@ -26,7 +28,7 @@ function Signup() {
             <div>
               <img
                 className="h-12 w-auto block"
-                src={require('../assets/images/logo-icon.png')}
+                src={logoIcon}
                 alt="Your Company"
               />
               <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">Sign Up</h2>

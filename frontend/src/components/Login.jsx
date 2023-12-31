@@ -2,6 +2,8 @@ import React from 'react'
 import { useState,useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import Swal from 'sweetalert2'
+import logoIcon from '../assets/images/logo-icon.png'
+
 function Login() {
     const{login}=useContext(AuthContext)
   const[email,setEmail]=useState('')
@@ -22,7 +24,7 @@ function Login() {
                 <img
 
                     className="h-12 w-auto"
-                    src={require('../assets/images/logo-icon.png')}
+                    src={logoIcon}
 
                     alt="Your Company"
                 />
