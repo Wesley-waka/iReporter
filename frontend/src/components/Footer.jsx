@@ -1,3 +1,5 @@
+import logoGray from '../assets/images/logo-gray.png';
+
 const navigation = {
     reports: [
       { name: "Pending", href: "#" },
@@ -92,7 +94,7 @@ const navigation = {
             <div className="space-y-8">
               <img
                 className="h-7"
-                src={'../assets/images/logo-gray.png'}
+                src={logoGray}
                 alt="Company name"
               />
               <p className="text-sm leading-6 text-gray-300">

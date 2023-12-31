@@ -1,94 +1,94 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-const adminlogin=(email,password)=>{
-    return fetch('/admin',{
-      method: "POST",
-          headers: 
-         {
-          'content-Type': "application/json"
-         } ,
-         body: JSON.stringify({email: email, password: password})
-    })
-    .then(response=>response.json())
-        .then(data=>{
-          if(data.authorized){
-            const token=data.token
-    
-            return {admin: data.user,token:token}
-          }
-          else{
-            throw new Error("Invalid email or password")
-          }})
+import React,{useState,useContext} from 'react'
+import logo1 from '../../assets/images/logo-icon.png'
+import { AuthContext } from '../../context/AuthContext'
+function AdminLogin() {
+    const{adminlog}=useContext(AuthContext)
+    const[email,setEmail]=useState('')
+    const[password,setPassword]=useState('')
+    console.log(email)
+    console.log(password)
+    const handleSubmit = (e)=>{
+      // send Data to rails
+      e.preventDefault()
+      adminlog(email, password)
   }
-  export const AdminContext = createContext({
-    admin: null,
-    token: null,
-    logout1: ()=>{},
-    adminlog:()=>{}
-  });
+  
+  return (
+    <div>
+        <div className="flex min-h-full p-10">
+            <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+            <div className="mx-auto w-full max-w-sm lg:w-96">
+                <div>
+                    <img
+                        className="h-12 w-auto"
+                        src={logo1}
+                        alt="Your Company"
+                    />
+                    <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+                </div>
 
-  const AdminAuthProvider = ({ children }) => {
-    const [admin, setAdmin] = useState(null);
-  const [token, setToken] = useState(null);
-  const navigate = useNavigate();
+                <div className="mt-8">
+                    <div className="mt-6">
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                    Email address
+                                </label>
+                                <div className="mt-1">
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        onChange={e => setEmail(e.target.value)} 
+                                        autoComplete="email"
+                                        required
+                                        className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
+                            </div>
 
-  useEffect(() => {
-     const storedToken = localStorage.getItem("token");
-    const storedAdmin = localStorage.getItem("admin");
+                            <div className="space-y-1">
+                                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                                    Password
+                                </label>
+                                <div className="mt-1">
+                                    <input
+                                        id="password"
+                                        name="password"
+                                        type="password"
+                                        onChange={e => setPassword(e.target.value)} 
+                                        autoComplete="current-password"
+                                        required
+                                        className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
+                            </div>
 
-    if (storedToken && storedAdmin) {
-      setAdmin(storedAdmin);
-      setToken(storedToken);
-     
-   
-    }
-  }, []);
+                            <div>
+                                <button
+                                type="submit"
+                                className="flex w-full justify-center rounded-md border border-transparent bg-main1 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                >
+                                    Sign in
+                                </button>
+                            </div>
+                            <p>Don't have an account? <a href='/adminsignup' className=' font-sm text-blue-700 underline'>Sign up</a></p>
+                        </form>
 
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div className="relative hidden w-0 flex-1 lg:block">
+            <img
+                className="absolute inset-0 h-full w-full object-cover"
+                src="https://globalgovernanceforum.org/wp-content/uploads/2020/12/strategies-fight-corruption.jpg"
+                alt=""
+            />
+            </div>
+        </div>
+    </div>
+  )
+}
 
-  const logout1 = () => {
-    localStorage.removeItem('admin');
-    localStorage.removeItem('token');
-    setAdmin(null);
-    setToken(null);
-  };
-  const adminlog= async(email,password)=>{
-    if(admin){
-      Swal.fire({
-        icon: 'warning',
-        title: 'Admin is already logged in',
-      });
-      navigate('/admindashboard')
-      return;
-    }
-    try{
-      const{admin,token}=await adminlogin(email,password)
-      setAdmin(admin)
-      setToken(token)
-      localStorage.setItem('token',token)
-    localStorage.setItem('admin',JSON.stringify(admin))
-    Swal.fire({
-      icon: 'success',
-      title: 'Logged in successfully',
-    });
-   
-    navigate('/admindashboard')
-    }catch(error){
-      console.error(error.message)
-    Swal.fire({
-      icon: 'error',
-      title: 'Error logging in',
-      text: error.message,
-    });
-    throw error;
-    }
-   }
-
-    return (
-        <AdminContext.Provider value={{ admin, token,logout1,adminlog }}>
-    
-          {children}
-        </AdminContext.Provider>
-      );
-  }
-  export default AdminAuthProvider
+export default AdminLogin

@@ -6,7 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import Swal from 'sweetalert2'
 // import { AdminContext } from "../context/AdminContext";
 // import { PlusIcon } from "@heroicons/react/20/solid";
-
+import logo from '../assets/images/logo(outer_glow).png'
 // const user = {
 //   name: "Tom Cook",
 //   email: "tom@example.com",
@@ -81,7 +81,7 @@ export default function Navbar() {
                   href="/">  
                   <img
                     className=" h-12 w-auto lg:block oject-cover"
-                    src={'../assets/images/logo(outer_glow).png'}
+                    src={logo}
                     alt="iReporter"                    
                   />
                 </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
                   {
                     user ? 
                     userNavigation.map((item) => (
-                      <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+                      <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4" key={item.id}>
                     < a
                       key={item.name}
                      href={item.href}
@@ -107,7 +107,7 @@ export default function Navbar() {
                     </div>
                   )) :
                   navigation.map((item) => (
-                    <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+                    <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4" key={item.id}>
                     < a
                       key={item.name}
                      href={item.href}

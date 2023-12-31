@@ -57,7 +57,7 @@ function PublicReports() {
     });
     setInitialRecords(sortBy(filteredRecords, "description"));
   }, [search, reports]);
- 
+
 
   useEffect(() => {
     const data = sortBy(initialRecords, sortStatus.columnAccessor);

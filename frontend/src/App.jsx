@@ -16,7 +16,7 @@ import About from "./components/About";
 import AdminReportDetails from "./pages/AdminReportDetails";
 
 import UserLandingPage from "./pages/UserLandingPage";
-
+import { MantineProvider } from '@mantine/core';
 import Homepage from "./components/Homepage";
 import AuthProvider from "./context/AuthContext";
 import UserReportDetails from "./pages/UserReportDetails";
@@ -26,8 +26,8 @@ function App() {
   return (
 
     <BrowserRouter>
+      <MantineProvider>
       <div className="App">
-      
       
         <AuthProvider>
           <AdminAuthProvider>
@@ -53,6 +53,7 @@ function App() {
 
         <Footer />
       </div>
+      </MantineProvider>
   </BrowserRouter>
 
   );
