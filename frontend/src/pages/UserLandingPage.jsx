@@ -26,7 +26,7 @@ function UserLandingPage() {
   // fetch all user specific reports
   useEffect(() => {
     if (user && user.id && typeof user.id === "number") {
-      fetch(`/userreport/${user.id}`)
+      fetch(`https://ireporter1.onrender.com/userreport/${user.id}`)
         .then((res) => res.json())
         .then((data) => {
           setReports(data); // Update reports state with fetched data
@@ -73,7 +73,7 @@ function UserLandingPage() {
 
   useEffect(() => {
     if (user && user.id && typeof user.id === "number") {
-      fetch(`/userreport/${user.id}`)
+      fetch(`https://ireporter1.onrender.com/userreport/${user.id}`)
         .then((res) => res.json())
         .then((data) => setInitialRecords(data));
     }
@@ -92,7 +92,7 @@ function UserLandingPage() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <img
                 className="h-7"
-                src={require("..//assets/images/user_dashboard.png")}
+                src="..//assets/images/user_dashboard.png"
                 alt="Company name"
               />
             </div>

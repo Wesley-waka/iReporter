@@ -6,7 +6,7 @@ function UserReports({ userId }) {
 
   useEffect(() => {
     axios
-      .get("/api/reports?userId=${userId")
+      .get("https://ireporter1.onrender.com/api/reports?userId=${userId")
       .then((response) => {
         setReports(response.data);
       })
